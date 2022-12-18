@@ -3,7 +3,7 @@
 // import * as HelloCdk from '../lib/hello-cdk-stack';
 
 // example test. To run these tests, uncomment this file along with the
-// example resource in lib/hello-cdk-stack.ts
+// example resource in lib/rest-api-stack.ts
 test('SQS Queue Created', () => {
 //   const app = new cdk.App();
 //     // WHEN

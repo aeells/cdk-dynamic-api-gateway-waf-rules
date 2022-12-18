@@ -1,8 +1,8 @@
 {
-  "name": "hello-cdk",
+  "name": "cdk-dynamic-api-gateway-waf-rules",
   "version": "0.1.0",
   "bin": {
-    "hello-cdk": "bin/hello-cdk.js"
+    "app": "bin/app.js"
   },
   "scripts": {
     "build": "tsc",
