@@ -4,7 +4,7 @@ import * as path from 'path';
 
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
-import {ApiGatewayWafTrigger} from "./api-gateway-waf-trigger";
+import { ApiGatewayWafTrigger } from "./api-gateway-waf-trigger";
 
 export class RestApiStack extends cdk.Stack
 {
@@ -14,17 +14,11 @@ export class RestApiStack extends cdk.Stack
     {
         super(scope, id, props);
 
-        // in the real world, our api endpoint resources are loaded from an external package
+        // in the real world, our api endpoint resources are loaded from an external package from another development team
         this.createExampleRestApi();
 
-        // there is no cdk api to list/get RestApi resources so use a lambda and sdk
-
-        const apiGatewayWafTrigger = new ApiGatewayWafTrigger(this, 'ApiGatewayWafTrigger', {
-            restApiId: this.restApi.restApiId,
-            stageName: 'prod',
-        });
-
-        apiGatewayWafTrigger.triggerFunction.executeAfter(this.restApi);
+        // there is no cdk api to list/get RestApi resources so using a lambda and sdk
+        this.createApiGatewayWafTrigger();
     }
 
     private createExampleRestApi()
@@ -42,5 +36,15 @@ export class RestApiStack extends cdk.Stack
         });
         user.addMethod('GET', new apigateway.LambdaIntegration(getUserLambda, {proxy: true}));
         // ...etc...
+    }
+
+    private createApiGatewayWafTrigger()
+    {
+        const apiGatewayWafTrigger = new ApiGatewayWafTrigger(this, 'ApiGatewayWafTrigger', {
+            restApiId: this.restApi.restApiId,
+            stageName: 'prod',
+        });
+
+        apiGatewayWafTrigger.triggerFunction.executeAfter(this.restApi);
     }
 }
