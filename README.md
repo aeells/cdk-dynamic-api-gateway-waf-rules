@@ -19,14 +19,21 @@ This example repo consists of the following CDK components.
 
 ###### Rest API stack
 - Dummy API Gateway REST API 
+
+![Dummy API Gateway REST API endpoints](docs/rest-api-endpoints.png)
+
 - TriggerFunction to invoke an AWS Lambda function during deployment
 - Lambda function to capture and store API endpoints in AWS Systems Manager Parameter Store
 
+![SSM Parameter Store variable](docs/rest-api-ssm-paths.png)
+
 ###### Frontend stack
 - Reads API endpoint paths from AWS Systems Manager Parameter Store
+- Creates an associated Regional WAF ACL
 - Creates a list of 'Allow' WAF rules matching each '/books/**' endpoint
 - Creates 'Block' WAF rule for all other '/' endpoints
-- Creates an associated Regional WAF ACL
+
+![WAF Web ACL rules](docs/waf-acl-rules.png)
 
 ### Prerequisites
 - Sign up for an AWS account (this example will deploy to free-tier if destroyed shortly afterwards) 
