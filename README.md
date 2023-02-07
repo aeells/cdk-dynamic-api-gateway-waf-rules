@@ -24,8 +24,8 @@ This example repo consists of the following CDK components.
 
 ###### Frontend stack
 - Reads API endpoint paths from AWS Systems Manager Parameter Store
-- Creates 'Allow' WAF rules matching all '/api/**' endpoints
-- Creates 'Block' WAF rules for all other '/api' endpoints
+- Creates a list of 'Allow' WAF rules matching each '/books/**' endpoint
+- Creates 'Block' WAF rule for all other '/' endpoints
 - Creates an associated Regional WAF ACL
 
 ### Prerequisites

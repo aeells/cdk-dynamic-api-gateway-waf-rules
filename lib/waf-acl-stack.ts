@@ -1,8 +1,7 @@
-import * as cdk from 'aws-cdk-lib';
 import {Construct} from 'constructs';
+import * as cdk from 'aws-cdk-lib';
 import * as waf from 'aws-cdk-lib/aws-wafv2';
 import * as ssm from 'aws-cdk-lib/aws-ssm';
-import { Fn } from 'aws-cdk-lib';
 
 export interface WafRule
 {
@@ -12,19 +11,30 @@ export interface WafRule
 
 export class WafAclStack extends cdk.Stack
 {
-    readonly openApiPaths: string[];
+    private openApiPaths: string[];
 
     constructor(scope: Construct, id: string, props?: cdk.StackProps)
     {
         super(scope, id, props);
 
-        this.openApiPaths = Fn.split(',',
-            ssm.StringParameter.fromStringParameterAttributes(this, 'ERSchedulerSSMOpenApiPaths', {
-                parameterName: 'openapi-paths',
-            }).stringValue
-        );
+        // retrieve the REST API endpoint paths from SSM
+        this.retrieveRestApiEndpointPaths();
 
+        // create WAF Web ACL rules locked down to those endpoints
         this.createWafAcl();
+    }
+
+    private retrieveRestApiEndpointPaths()
+    {
+        this.openApiPaths = cdk.Fn.split(',',
+            ssm.StringParameter.fromStringParameterAttributes(this, 'SSMOpenApiPaths', {
+                parameterName: 'openapi-paths',
+            }).stringValue,
+            // todo aeells - this sucks but is a limitation of the CDK and required to iterate properly
+            // not sure how to handle this better (should define as CONSTANT but easier here for demo)
+            // read the Fn#split api to understand the restrictions
+            2
+        );
     }
 
     private createWafAcl() {
@@ -45,11 +55,10 @@ export class WafAclStack extends cdk.Stack
         });
     }
 
-    // todo aeells - it might be more efficient to create a single rule with multiple statements?
     private getApiGatewayPathAllowRules(priority: number): WafRule[] {
         const rules: WafRule[] = [];
         for (let i = 0; i < this.openApiPaths.length; i++) {
-            const apiPath: string = Fn.select(i, this.openApiPaths);
+            const apiPath: string = cdk.Fn.select(i, this.openApiPaths);
             rules.push(this.createApiGatewayRegexAllowRule(apiPath, priority++));
         }
 
@@ -108,7 +117,7 @@ export class WafAclStack extends cdk.Stack
                             uriPath: {},
                         },
                         positionalConstraint: 'STARTS_WITH',
-                        searchString: '/api/',
+                        searchString: '/',
                         textTransformations: [
                             {
                                 type: 'NONE',

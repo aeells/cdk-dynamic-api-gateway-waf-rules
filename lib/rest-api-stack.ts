@@ -1,9 +1,6 @@
-import * as cdk from 'aws-cdk-lib';
 import {Construct} from 'constructs';
-import * as path from 'path';
-
+import * as cdk from 'aws-cdk-lib';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
-import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { ApiGatewayWafTrigger } from "./api-gateway-waf-trigger";
 
 export class RestApiStack extends cdk.Stack
@@ -27,14 +24,14 @@ export class RestApiStack extends cdk.Stack
             description: 'example api gateway',
         });
 
-        const users = this.restApi.root.addResource('users');
-        const user = users.addResource('{userId}');
-        const getUserLambda = new lambda.Function(this, 'getUserLambda', {
-            runtime: lambda.Runtime.NODEJS_16_X,
-            handler: 'index.main',
-            code: lambda.Code.fromAsset(path.join(__dirname, '/user')),
-        });
-        user.addMethod('GET', new apigateway.LambdaIntegration(getUserLambda, {proxy: true}));
+        const books = this.restApi.root.addResource('books');
+        books.addMethod('GET');
+        books.addMethod('POST');
+
+        const book = books.addResource('{bookId}');
+        book.addMethod('GET');
+        book.addMethod('DELETE');
+
         // ...etc...
     }
 

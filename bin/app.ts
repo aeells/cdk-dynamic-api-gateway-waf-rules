@@ -9,7 +9,7 @@ const restApiStack = new RestApiStack(app, 'RestApiStack', {
     env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
 });
 
-const wafAclStack = new WafAclStack(app, 'FrontEndStack', {
+const wafAclStack = new WafAclStack(app, 'WafAclStack', {
     env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
 });
 
