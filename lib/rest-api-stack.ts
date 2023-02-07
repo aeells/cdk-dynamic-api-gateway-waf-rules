@@ -15,13 +15,13 @@ export class RestApiStack extends cdk.Stack
         super(scope, id, props);
 
         // in the real world, our api endpoint resources are loaded from an external package from another development team
-        this.createExampleRestApi();
+        this.createDummyRestApi();
 
         // there is no cdk api to list/get RestApi resources so using a lambda and sdk
         this.createApiGatewayWafTrigger();
     }
 
-    private createExampleRestApi()
+    private createDummyRestApi()
     {
         this.restApi = new apigateway.RestApi(this, 'ApiGatewayRestApi', {
             description: 'example api gateway',

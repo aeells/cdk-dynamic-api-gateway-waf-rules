@@ -10,7 +10,7 @@ export interface WafRule
     rule: waf.CfnWebACL.RuleProperty;
 }
 
-export class FrontEndStack extends cdk.Stack
+export class WafAclStack extends cdk.Stack
 {
     readonly openApiPaths: string[];
 

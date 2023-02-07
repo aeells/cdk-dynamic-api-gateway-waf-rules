@@ -9,6 +9,7 @@
     "build": "tsc ",
     "watch": "tsc -w",
     "test": "jest",
+    "test:update-snapshot": "jest --verbose --silent --no-coverage --no-bail --updateSnapshot",
     "cdk": "cdk"
   },
   "devDependencies": {

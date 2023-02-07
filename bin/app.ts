@@ -1,14 +1,16 @@
 #!/usr/bin/env node
-import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
 import {RestApiStack} from '../lib/rest-api-stack';
-import {FrontEndStack} from "../lib/frontend-stack";
+import {WafAclStack} from "../lib/waf-acl-stack";
 
 const app = new cdk.App();
-new RestApiStack(app, 'RestApiStack', {
+
+const restApiStack = new RestApiStack(app, 'RestApiStack', {
     env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
 });
 
-new FrontEndStack(app, 'FrontEndStack', {
+const wafAclStack = new WafAclStack(app, 'FrontEndStack', {
     env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
 });
+
+wafAclStack.addDependency(restApiStack, 'REST API needs to exist before attempting to build WAF rules.');
