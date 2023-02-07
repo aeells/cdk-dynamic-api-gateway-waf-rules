@@ -47,7 +47,7 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "b5b182c36096f19283e1157c12aed83c585041a5e7c0547e8fe9b548bd22ebf2.zip",
+          "S3Key": "f852bfab94a36947a0c426b4c9aa55f31d1ba844ac1c6c40af84b941fd4ae8bb.zip",
         },
         "Handler": "__entrypoint__.handler",
         "MemorySize": 128,
@@ -172,11 +172,14 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
       "Type": "AWS::IAM::Role",
       "UpdateReplacePolicy": "Retain",
     },
-    "ApiGatewayRestApiDeploymentEB306364a64ad81357491c8f01d39fcc4f318409": {
+    "ApiGatewayRestApiDeploymentEB3063643724aa18cd9a8f90356bfcf6a5cfc264": {
       "DependsOn": [
-        "ApiGatewayRestApiusersuserIdGETF191F861",
-        "ApiGatewayRestApiusersuserIdDB96F9B6",
-        "ApiGatewayRestApiusers93E8727D",
+        "ApiGatewayRestApibooksbookIdDELETEA84942C5",
+        "ApiGatewayRestApibooksbookIdGET8B2E5C3C",
+        "ApiGatewayRestApibooksbookId3F52F5C7",
+        "ApiGatewayRestApibooksGET008BCE66",
+        "ApiGatewayRestApibooksPOSTD6C9B664",
+        "ApiGatewayRestApibooksC1DD31F2",
       ],
       "Properties": {
         "Description": "example api gateway",
@@ -192,7 +195,7 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
       ],
       "Properties": {
         "DeploymentId": {
-          "Ref": "ApiGatewayRestApiDeploymentEB306364a64ad81357491c8f01d39fcc4f318409",
+          "Ref": "ApiGatewayRestApiDeploymentEB3063643724aa18cd9a8f90356bfcf6a5cfc264",
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi4735CE82",
@@ -201,7 +204,7 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
       },
       "Type": "AWS::ApiGateway::Stage",
     },
-    "ApiGatewayRestApiusers93E8727D": {
+    "ApiGatewayRestApibooksC1DD31F2": {
       "Properties": {
         "ParentId": {
           "Fn::GetAtt": [
@@ -209,136 +212,82 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
             "RootResourceId",
           ],
         },
-        "PathPart": "users",
+        "PathPart": "books",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi4735CE82",
         },
       },
       "Type": "AWS::ApiGateway::Resource",
     },
-    "ApiGatewayRestApiusersuserIdDB96F9B6": {
-      "Properties": {
-        "ParentId": {
-          "Ref": "ApiGatewayRestApiusers93E8727D",
-        },
-        "PathPart": "{userId}",
-        "RestApiId": {
-          "Ref": "ApiGatewayRestApi4735CE82",
-        },
-      },
-      "Type": "AWS::ApiGateway::Resource",
-    },
-    "ApiGatewayRestApiusersuserIdGETApiPermissionRestApiStackApiGatewayRestApi0210B485GETusersuserId247FF107": {
-      "Properties": {
-        "Action": "lambda:InvokeFunction",
-        "FunctionName": {
-          "Fn::GetAtt": [
-            "getUserLambda40CC132E",
-            "Arn",
-          ],
-        },
-        "Principal": "apigateway.amazonaws.com",
-        "SourceArn": {
-          "Fn::Join": [
-            "",
-            [
-              "arn:",
-              {
-                "Ref": "AWS::Partition",
-              },
-              ":execute-api:",
-              {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
-              {
-                "Ref": "ApiGatewayRestApi4735CE82",
-              },
-              "/",
-              {
-                "Ref": "ApiGatewayRestApiDeploymentStageprodFFF8B293",
-              },
-              "/GET/users/*",
-            ],
-          ],
-        },
-      },
-      "Type": "AWS::Lambda::Permission",
-    },
-    "ApiGatewayRestApiusersuserIdGETApiPermissionTestRestApiStackApiGatewayRestApi0210B485GETusersuserId52B860E3": {
-      "Properties": {
-        "Action": "lambda:InvokeFunction",
-        "FunctionName": {
-          "Fn::GetAtt": [
-            "getUserLambda40CC132E",
-            "Arn",
-          ],
-        },
-        "Principal": "apigateway.amazonaws.com",
-        "SourceArn": {
-          "Fn::Join": [
-            "",
-            [
-              "arn:",
-              {
-                "Ref": "AWS::Partition",
-              },
-              ":execute-api:",
-              {
-                "Ref": "AWS::Region",
-              },
-              ":",
-              {
-                "Ref": "AWS::AccountId",
-              },
-              ":",
-              {
-                "Ref": "ApiGatewayRestApi4735CE82",
-              },
-              "/test-invoke-stage/GET/users/*",
-            ],
-          ],
-        },
-      },
-      "Type": "AWS::Lambda::Permission",
-    },
-    "ApiGatewayRestApiusersuserIdGETF191F861": {
+    "ApiGatewayRestApibooksGET008BCE66": {
       "Properties": {
         "AuthorizationType": "NONE",
         "HttpMethod": "GET",
         "Integration": {
-          "IntegrationHttpMethod": "POST",
-          "Type": "AWS_PROXY",
-          "Uri": {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition",
-                },
-                ":apigateway:",
-                {
-                  "Ref": "AWS::Region",
-                },
-                ":lambda:path/2015-03-31/functions/",
-                {
-                  "Fn::GetAtt": [
-                    "getUserLambda40CC132E",
-                    "Arn",
-                  ],
-                },
-                "/invocations",
-              ],
-            ],
-          },
+          "Type": "MOCK",
         },
         "ResourceId": {
-          "Ref": "ApiGatewayRestApiusersuserIdDB96F9B6",
+          "Ref": "ApiGatewayRestApibooksC1DD31F2",
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi4735CE82",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "ApiGatewayRestApibooksPOSTD6C9B664": {
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "POST",
+        "Integration": {
+          "Type": "MOCK",
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayRestApibooksC1DD31F2",
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi4735CE82",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "ApiGatewayRestApibooksbookId3F52F5C7": {
+      "Properties": {
+        "ParentId": {
+          "Ref": "ApiGatewayRestApibooksC1DD31F2",
+        },
+        "PathPart": "{bookId}",
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi4735CE82",
+        },
+      },
+      "Type": "AWS::ApiGateway::Resource",
+    },
+    "ApiGatewayRestApibooksbookIdDELETEA84942C5": {
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "DELETE",
+        "Integration": {
+          "Type": "MOCK",
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayRestApibooksbookId3F52F5C7",
+        },
+        "RestApiId": {
+          "Ref": "ApiGatewayRestApi4735CE82",
+        },
+      },
+      "Type": "AWS::ApiGateway::Method",
+    },
+    "ApiGatewayRestApibooksbookIdGET8B2E5C3C": {
+      "Properties": {
+        "AuthorizationType": "NONE",
+        "HttpMethod": "GET",
+        "Integration": {
+          "Type": "MOCK",
+        },
+        "ResourceId": {
+          "Ref": "ApiGatewayRestApibooksbookId3F52F5C7",
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi4735CE82",
@@ -356,7 +305,7 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "50d321a0b3483a043ae422562650c90587297d2d44b3dd2d4ebca6f7e3fb29b8.zip",
+          "S3Key": "821ad45b890ae22ca7e5f6cfcee5dd1984edac62200a54b39bca2bf4372b48ee.zip",
         },
         "Environment": {
           "Variables": {
@@ -377,7 +326,7 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
       },
       "Type": "AWS::Lambda::Function",
     },
-    "ApiGatewayWafTriggerApiGatewayOpenApiPutFnCurrentVersion2B6C2C037407f69838b8df9f1c13dd4fcbbf22a9": {
+    "ApiGatewayWafTriggerApiGatewayOpenApiPutFnCurrentVersion2B6C2C03db2b8a2f3f865200330c6476625a187d": {
       "Properties": {
         "FunctionName": {
           "Ref": "ApiGatewayWafTriggerApiGatewayOpenApiPutFn1601EB8B",
@@ -446,18 +395,19 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
       "DependsOn": [
         "ApiGatewayRestApiAccountDF1162EC",
         "ApiGatewayRestApiCloudWatchRole48C066E7",
-        "ApiGatewayRestApiusersuserIdGETApiPermissionRestApiStackApiGatewayRestApi0210B485GETusersuserId247FF107",
-        "ApiGatewayRestApiusersuserIdGETApiPermissionTestRestApiStackApiGatewayRestApi0210B485GETusersuserId52B860E3",
-        "ApiGatewayRestApiusersuserIdGETF191F861",
-        "ApiGatewayRestApiusersuserIdDB96F9B6",
-        "ApiGatewayRestApiusers93E8727D",
-        "ApiGatewayRestApiDeploymentEB306364a64ad81357491c8f01d39fcc4f318409",
+        "ApiGatewayRestApibooksbookIdDELETEA84942C5",
+        "ApiGatewayRestApibooksbookIdGET8B2E5C3C",
+        "ApiGatewayRestApibooksbookId3F52F5C7",
+        "ApiGatewayRestApibooksGET008BCE66",
+        "ApiGatewayRestApibooksPOSTD6C9B664",
+        "ApiGatewayRestApibooksC1DD31F2",
+        "ApiGatewayRestApiDeploymentEB3063643724aa18cd9a8f90356bfcf6a5cfc264",
         "ApiGatewayRestApiDeploymentStageprodFFF8B293",
         "ApiGatewayRestApi4735CE82",
       ],
       "Properties": {
         "HandlerArn": {
-          "Ref": "ApiGatewayWafTriggerApiGatewayOpenApiPutFnCurrentVersion2B6C2C037407f69838b8df9f1c13dd4fcbbf22a9",
+          "Ref": "ApiGatewayWafTriggerApiGatewayOpenApiPutFnCurrentVersion2B6C2C03db2b8a2f3f865200330c6476625a187d",
         },
         "ServiceToken": {
           "Fn::GetAtt": [
@@ -468,59 +418,6 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
       },
       "Type": "Custom::Trigger",
       "UpdateReplacePolicy": "Delete",
-    },
-    "getUserLambda40CC132E": {
-      "DependsOn": [
-        "getUserLambdaServiceRoleB615547C",
-      ],
-      "Properties": {
-        "Code": {
-          "S3Bucket": {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-          },
-          "S3Key": "7de530d447468979414e88f458bda8270ccb30a2ce6d9c9cb2a0498e1135108e.zip",
-        },
-        "Handler": "index.main",
-        "Role": {
-          "Fn::GetAtt": [
-            "getUserLambdaServiceRoleB615547C",
-            "Arn",
-          ],
-        },
-        "Runtime": "nodejs16.x",
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "getUserLambdaServiceRoleB615547C": {
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": [
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
     },
   },
   "Rules": {

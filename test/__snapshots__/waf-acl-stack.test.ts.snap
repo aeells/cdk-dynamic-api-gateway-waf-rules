@@ -8,7 +8,7 @@ exports[`WAF ACL stack test a WAF Web ACL exists with WAF "Allow" rules from dep
       "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
       "Type": "AWS::SSM::Parameter::Value<String>",
     },
-    "ERSchedulerSSMOpenApiPathsParameter": {
+    "SSMOpenApiPathsParameter": {
       "Default": "openapi-paths",
       "Type": "AWS::SSM::Parameter::Value<String>",
     },
@@ -34,14 +34,1596 @@ exports[`WAF ACL stack test a WAF Web ACL exists with WAF "Allow" rules from dep
                 "RegexString": {
                   "Fn::Select": [
                     0,
-                    {
-                      "Fn::Split": [
-                        ",",
-                        {
-                          "Ref": "ERSchedulerSSMOpenApiPathsParameter",
-                        },
-                      ],
-                    },
+                    [
+                      {
+                        "Fn::Select": [
+                          0,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          1,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          2,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          3,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          4,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          5,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          6,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          7,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          8,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          9,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  ],
+                },
+                "TextTransformations": [
+                  {
+                    "Priority": 0,
+                    "Type": "NONE",
+                  },
+                ],
+              },
+            },
+            "VisibilityConfig": {
+              "CloudWatchMetricsEnabled": true,
+              "MetricName": "ApiGatewayPathAllows",
+              "SampledRequestsEnabled": true,
+            },
+          },
+          {
+            "Action": {
+              "Allow": {},
+            },
+            "Name": "ApiGatewayPathAllows11",
+            "Priority": 11,
+            "Statement": {
+              "RegexMatchStatement": {
+                "FieldToMatch": {
+                  "UriPath": {},
+                },
+                "RegexString": {
+                  "Fn::Select": [
+                    1,
+                    [
+                      {
+                        "Fn::Select": [
+                          0,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          1,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          2,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          3,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          4,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          5,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          6,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          7,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          8,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          9,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  ],
+                },
+                "TextTransformations": [
+                  {
+                    "Priority": 0,
+                    "Type": "NONE",
+                  },
+                ],
+              },
+            },
+            "VisibilityConfig": {
+              "CloudWatchMetricsEnabled": true,
+              "MetricName": "ApiGatewayPathAllows",
+              "SampledRequestsEnabled": true,
+            },
+          },
+          {
+            "Action": {
+              "Allow": {},
+            },
+            "Name": "ApiGatewayPathAllows12",
+            "Priority": 12,
+            "Statement": {
+              "RegexMatchStatement": {
+                "FieldToMatch": {
+                  "UriPath": {},
+                },
+                "RegexString": {
+                  "Fn::Select": [
+                    2,
+                    [
+                      {
+                        "Fn::Select": [
+                          0,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          1,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          2,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          3,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          4,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          5,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          6,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          7,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          8,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          9,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  ],
+                },
+                "TextTransformations": [
+                  {
+                    "Priority": 0,
+                    "Type": "NONE",
+                  },
+                ],
+              },
+            },
+            "VisibilityConfig": {
+              "CloudWatchMetricsEnabled": true,
+              "MetricName": "ApiGatewayPathAllows",
+              "SampledRequestsEnabled": true,
+            },
+          },
+          {
+            "Action": {
+              "Allow": {},
+            },
+            "Name": "ApiGatewayPathAllows13",
+            "Priority": 13,
+            "Statement": {
+              "RegexMatchStatement": {
+                "FieldToMatch": {
+                  "UriPath": {},
+                },
+                "RegexString": {
+                  "Fn::Select": [
+                    3,
+                    [
+                      {
+                        "Fn::Select": [
+                          0,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          1,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          2,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          3,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          4,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          5,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          6,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          7,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          8,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          9,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  ],
+                },
+                "TextTransformations": [
+                  {
+                    "Priority": 0,
+                    "Type": "NONE",
+                  },
+                ],
+              },
+            },
+            "VisibilityConfig": {
+              "CloudWatchMetricsEnabled": true,
+              "MetricName": "ApiGatewayPathAllows",
+              "SampledRequestsEnabled": true,
+            },
+          },
+          {
+            "Action": {
+              "Allow": {},
+            },
+            "Name": "ApiGatewayPathAllows14",
+            "Priority": 14,
+            "Statement": {
+              "RegexMatchStatement": {
+                "FieldToMatch": {
+                  "UriPath": {},
+                },
+                "RegexString": {
+                  "Fn::Select": [
+                    4,
+                    [
+                      {
+                        "Fn::Select": [
+                          0,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          1,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          2,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          3,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          4,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          5,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          6,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          7,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          8,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          9,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  ],
+                },
+                "TextTransformations": [
+                  {
+                    "Priority": 0,
+                    "Type": "NONE",
+                  },
+                ],
+              },
+            },
+            "VisibilityConfig": {
+              "CloudWatchMetricsEnabled": true,
+              "MetricName": "ApiGatewayPathAllows",
+              "SampledRequestsEnabled": true,
+            },
+          },
+          {
+            "Action": {
+              "Allow": {},
+            },
+            "Name": "ApiGatewayPathAllows15",
+            "Priority": 15,
+            "Statement": {
+              "RegexMatchStatement": {
+                "FieldToMatch": {
+                  "UriPath": {},
+                },
+                "RegexString": {
+                  "Fn::Select": [
+                    5,
+                    [
+                      {
+                        "Fn::Select": [
+                          0,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          1,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          2,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          3,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          4,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          5,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          6,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          7,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          8,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          9,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  ],
+                },
+                "TextTransformations": [
+                  {
+                    "Priority": 0,
+                    "Type": "NONE",
+                  },
+                ],
+              },
+            },
+            "VisibilityConfig": {
+              "CloudWatchMetricsEnabled": true,
+              "MetricName": "ApiGatewayPathAllows",
+              "SampledRequestsEnabled": true,
+            },
+          },
+          {
+            "Action": {
+              "Allow": {},
+            },
+            "Name": "ApiGatewayPathAllows16",
+            "Priority": 16,
+            "Statement": {
+              "RegexMatchStatement": {
+                "FieldToMatch": {
+                  "UriPath": {},
+                },
+                "RegexString": {
+                  "Fn::Select": [
+                    6,
+                    [
+                      {
+                        "Fn::Select": [
+                          0,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          1,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          2,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          3,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          4,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          5,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          6,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          7,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          8,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          9,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  ],
+                },
+                "TextTransformations": [
+                  {
+                    "Priority": 0,
+                    "Type": "NONE",
+                  },
+                ],
+              },
+            },
+            "VisibilityConfig": {
+              "CloudWatchMetricsEnabled": true,
+              "MetricName": "ApiGatewayPathAllows",
+              "SampledRequestsEnabled": true,
+            },
+          },
+          {
+            "Action": {
+              "Allow": {},
+            },
+            "Name": "ApiGatewayPathAllows17",
+            "Priority": 17,
+            "Statement": {
+              "RegexMatchStatement": {
+                "FieldToMatch": {
+                  "UriPath": {},
+                },
+                "RegexString": {
+                  "Fn::Select": [
+                    7,
+                    [
+                      {
+                        "Fn::Select": [
+                          0,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          1,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          2,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          3,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          4,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          5,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          6,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          7,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          8,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          9,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  ],
+                },
+                "TextTransformations": [
+                  {
+                    "Priority": 0,
+                    "Type": "NONE",
+                  },
+                ],
+              },
+            },
+            "VisibilityConfig": {
+              "CloudWatchMetricsEnabled": true,
+              "MetricName": "ApiGatewayPathAllows",
+              "SampledRequestsEnabled": true,
+            },
+          },
+          {
+            "Action": {
+              "Allow": {},
+            },
+            "Name": "ApiGatewayPathAllows18",
+            "Priority": 18,
+            "Statement": {
+              "RegexMatchStatement": {
+                "FieldToMatch": {
+                  "UriPath": {},
+                },
+                "RegexString": {
+                  "Fn::Select": [
+                    8,
+                    [
+                      {
+                        "Fn::Select": [
+                          0,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          1,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          2,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          3,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          4,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          5,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          6,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          7,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          8,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          9,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  ],
+                },
+                "TextTransformations": [
+                  {
+                    "Priority": 0,
+                    "Type": "NONE",
+                  },
+                ],
+              },
+            },
+            "VisibilityConfig": {
+              "CloudWatchMetricsEnabled": true,
+              "MetricName": "ApiGatewayPathAllows",
+              "SampledRequestsEnabled": true,
+            },
+          },
+          {
+            "Action": {
+              "Allow": {},
+            },
+            "Name": "ApiGatewayPathAllows19",
+            "Priority": 19,
+            "Statement": {
+              "RegexMatchStatement": {
+                "FieldToMatch": {
+                  "UriPath": {},
+                },
+                "RegexString": {
+                  "Fn::Select": [
+                    9,
+                    [
+                      {
+                        "Fn::Select": [
+                          0,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          1,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          2,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          3,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          4,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          5,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          6,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          7,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          8,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                      {
+                        "Fn::Select": [
+                          9,
+                          {
+                            "Fn::Split": [
+                              ",",
+                              {
+                                "Ref": "SSMOpenApiPathsParameter",
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
                   ],
                 },
                 "TextTransformations": [
@@ -70,7 +1652,7 @@ exports[`WAF ACL stack test a WAF Web ACL exists with WAF "Allow" rules from dep
                   "UriPath": {},
                 },
                 "PositionalConstraint": "STARTS_WITH",
-                "SearchString": "/api/",
+                "SearchString": "/",
                 "TextTransformations": [
                   {
                     "Priority": 0,
