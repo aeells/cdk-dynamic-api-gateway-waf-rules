@@ -1,7 +1,18 @@
 ## Generate dynamic WAF rules from deployed API Gateway endpoints
 
-### Why is this helpful?
+### Problem statement
+Many WAF rule implementations 'Block' a hard-coded list of static endpoints and then 'Allow' anything else.
 
+To minimise attack surfaces, it is advisable to lockdown WAF rules to 'Allow' only specified application URIs and then 'Block' everything else.
+
+However, hard-coded (static) WAF rules also couple your infrastructure to the codebase so are best avoided.
+
+### Solution statement
+The following example CDK implementation deploys a dummy API Gateway REST API to AWS.
+
+On CDK deployment, a Lambda Trigger Function writes the deployed API REST endpoints URIs to AWS Systems Manager Parameter Store.
+
+A subsequent stack, deployed with a dependency, then reads these endpoints from Parameter Store and builds WAF rules to 'Allow' what is deployed and 'Block' everything else.
 
 ### CDK Components
 This example repo consists of the following CDK components.
@@ -18,12 +29,12 @@ This example repo consists of the following CDK components.
 - Creates an associated Regional WAF ACL
 
 ### Prerequisites
-- Sign up for an AWS account (this example will deploy to free-tier if destroyed) 
+- Sign up for an AWS account (this example will deploy to free-tier if destroyed shortly afterwards) 
 - (Best practice) Enable MFA for the root user
 - (Best practice) Create a user group with 'AdministratorAccess' permissions and associate a user with access key credentials
 - Store these access key credentials in `~/.aws/credentials`
 
-### Basic commands
+### Deploy this example
 
 * `npm run build`     compile typescript to js
 * `cdk deploy --all`  deploy all stacks to your default AWS account/region

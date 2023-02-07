@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`REST API stack test a WAF Web ACL exists with WAF allow rules from API endpoints as per source-controlled snapshot 1`] = `
+exports[`WAF ACL stack test a WAF Web ACL exists with WAF "Allow" rules from deployed API endpoints and "Block" rules for all other endpoints as per source-controlled snapshot 1`] = `
 {
   "Parameters": {
     "BootstrapVersion": {
