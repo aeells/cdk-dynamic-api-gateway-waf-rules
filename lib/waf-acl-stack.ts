@@ -32,7 +32,9 @@ export class WafAclStack extends cdk.Stack
             }).stringValue,
             // todo aeells - this sucks but is a limitation of the CDK and required to iterate properly
             // not sure how to handle this better (should define as CONSTANT but easier here for demo)
-            // read the Fn#split api to understand the restrictions
+            // read the Fn#split api to understand the restrictions.
+            // if your API is under active development and changing in size it would be fairly
+            // simple to add a second 'size' parameter to the Parameter Store
             2
         );
     }
