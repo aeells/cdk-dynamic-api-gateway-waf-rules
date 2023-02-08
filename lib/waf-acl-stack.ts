@@ -30,11 +30,11 @@ export class WafAclStack extends cdk.Stack
             ssm.StringParameter.fromStringParameterAttributes(this, 'SSMOpenApiPaths', {
                 parameterName: 'openapi-paths',
             }).stringValue,
-            // todo aeells - this sucks but is a limitation of the CDK and required to iterate properly
-            // not sure how to handle this better (should define as CONSTANT but easier here for demo)
-            // read the Fn#split api to understand the restrictions.
-            // if your API is under active development and changing in size it would be fairly
-            // simple to add a second 'size' parameter to the Parameter Store
+            // todo aeells - array 'assumedLength' is a restriction of the CDK and is required here to iterate properly
+            // restriction documented in full in the Fn#split api https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-split.html
+
+            // if your API is under active development and regularly  changing in size it would
+            // be fairly simple to add a second 'array length' parameter to the Parameter Store
             2
         );
     }
