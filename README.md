@@ -1,5 +1,7 @@
 ## Generate dynamic WAF rules from deployed API Gateway endpoints
 
+[![Node.js CI](https://github.com/aeells/cdk-dynamic-api-gateway-waf-rules/actions/workflows/node.js.yml/badge.svg)](https://github.com/aeells/cdk-dynamic-api-gateway-waf-rules/actions/workflows/node.js.yml)
+
 ### Problem statement
 Many WAF rule implementations 'Block' a hard-coded list of static endpoints and then 'Allow' anything else.
 
