@@ -37,8 +37,8 @@ This example repo consists of the following CDK components.
 
 ### Prerequisites
 - Sign up for an AWS account (this example will deploy to free-tier if destroyed shortly afterwards) 
-- (Best practice) Enable MFA for the root user
-- (Best practice) Create a user group with 'AdministratorAccess' permissions and associate a user with access key credentials
+- ([Best practice](https://docs.aws.amazon.com/accounts/latest/reference/best-practices-root-user.html)) Enable MFA for the root user
+- ([Best practice](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html#jf_developer-power-user)) Create a user group with the pre-defined Developer power user job function 'PowerUserAccess' permissions and associate a user with access key credentials
 - Store these access key credentials in `~/.aws/credentials`
 
 ### Deploy this example

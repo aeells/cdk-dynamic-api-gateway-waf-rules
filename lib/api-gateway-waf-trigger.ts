@@ -30,7 +30,7 @@ export class ApiGatewayWafTrigger extends Construct
             initialPolicy: [
                 new iam.PolicyStatement({
                     effect: iam.Effect.ALLOW,
-                    actions: ['apigateway:GET', 'ssm:*', 'kms:*'],
+                    actions: ['apigateway:GET', 'ssm:*'],
                     resources: ['*']
                 })
             ]

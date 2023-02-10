@@ -373,7 +373,6 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
               "Action": [
                 "apigateway:GET",
                 "ssm:*",
-                "kms:*",
               ],
               "Effect": "Allow",
               "Resource": "*",
