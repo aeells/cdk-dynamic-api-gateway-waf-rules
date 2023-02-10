@@ -43,6 +43,7 @@ This example repo consists of the following CDK components.
 
 ### Deploy this example
 
+* `npm install`       install node package dependencies 
 * `npm run build`     compile typescript to js
 * `cdk deploy --all`  deploy all stacks to your default AWS account/region
 * `cdk destroy --all` destroy all stacks in your default AWS account/region
