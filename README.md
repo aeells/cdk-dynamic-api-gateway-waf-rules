@@ -1,5 +1,7 @@
 ## Generate dynamic WAF rules from deployed API Gateway endpoints
 
+[![CodeQL](https://github.com/aeells/cdk-dynamic-api-gateway-waf-rules/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/aeells/cdk-dynamic-api-gateway-waf-rules/actions/workflows/github-code-scanning/codeql)
+
 [![Node.js CI](https://github.com/aeells/cdk-dynamic-api-gateway-waf-rules/actions/workflows/node.js.yml/badge.svg)](https://github.com/aeells/cdk-dynamic-api-gateway-waf-rules/actions/workflows/node.js.yml)
 
 ### Problem statement
