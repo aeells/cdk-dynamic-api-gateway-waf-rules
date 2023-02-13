@@ -8,8 +8,8 @@ exports[`WAF ACL stack test a WAF Web ACL exists with WAF "Allow" rules from dep
       "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
       "Type": "AWS::SSM::Parameter::Value<String>",
     },
-    "SSMOpenApiPathsParameter": {
-      "Default": "openapi-paths",
+    "SSMApiPathsParameter": {
+      "Default": "api-paths",
       "Type": "AWS::SSM::Parameter::Value<String>",
     },
   },
@@ -42,7 +42,7 @@ exports[`WAF ACL stack test a WAF Web ACL exists with WAF "Allow" rules from dep
                             "Fn::Split": [
                               ",",
                               {
-                                "Ref": "SSMOpenApiPathsParameter",
+                                "Ref": "SSMApiPathsParameter",
                               },
                             ],
                           },
@@ -55,7 +55,7 @@ exports[`WAF ACL stack test a WAF Web ACL exists with WAF "Allow" rules from dep
                             "Fn::Split": [
                               ",",
                               {
-                                "Ref": "SSMOpenApiPathsParameter",
+                                "Ref": "SSMApiPathsParameter",
                               },
                             ],
                           },
@@ -100,7 +100,7 @@ exports[`WAF ACL stack test a WAF Web ACL exists with WAF "Allow" rules from dep
                             "Fn::Split": [
                               ",",
                               {
-                                "Ref": "SSMOpenApiPathsParameter",
+                                "Ref": "SSMApiPathsParameter",
                               },
                             ],
                           },
@@ -113,7 +113,7 @@ exports[`WAF ACL stack test a WAF Web ACL exists with WAF "Allow" rules from dep
                             "Fn::Split": [
                               ",",
                               {
-                                "Ref": "SSMOpenApiPathsParameter",
+                                "Ref": "SSMApiPathsParameter",
                               },
                             ],
                           },

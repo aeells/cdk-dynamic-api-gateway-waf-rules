@@ -97,7 +97,7 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
                         [
                           {
                             "Fn::GetAtt": [
-                              "ApiGatewayOpenApiPutFnAB333A3E",
+                              "ApiGatewayApiPutFn392CE7D3",
                               "Arn",
                             ],
                           },
@@ -116,17 +116,17 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
       },
       "Type": "AWS::IAM::Role",
     },
-    "ApiGatewayOpenApiPutFnAB333A3E": {
+    "ApiGatewayApiPutFn392CE7D3": {
       "DependsOn": [
-        "ApiGatewayOpenApiPutFnServiceRoleDefaultPolicy38F88D4D",
-        "ApiGatewayOpenApiPutFnServiceRole0D300317",
+        "ApiGatewayApiPutFnServiceRoleDefaultPolicyA65C78C1",
+        "ApiGatewayApiPutFnServiceRoleED7DF338",
       ],
       "Properties": {
         "Code": {
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "3d99f13fbdbb43dc2e2ea25e8afb9305b2267bc9bc6ea82c0a6df1ed5423e89d.zip",
+          "S3Key": "fe90b8fb2049e65706432874331ffd5993b93642ac19ec0a8d703484fd9255ec.zip",
         },
         "Environment": {
           "Variables": {
@@ -139,7 +139,7 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
         "Handler": "index.handler",
         "Role": {
           "Fn::GetAtt": [
-            "ApiGatewayOpenApiPutFnServiceRole0D300317",
+            "ApiGatewayApiPutFnServiceRoleED7DF338",
             "Arn",
           ],
         },
@@ -147,15 +147,39 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
       },
       "Type": "AWS::Lambda::Function",
     },
-    "ApiGatewayOpenApiPutFnCurrentVersion2E317B91fdb28b8b669b946cba00e3316e3fd074": {
+    "ApiGatewayApiPutFnCurrentVersion0484BF435d079b334bf5b56e5293673982e7168d": {
       "Properties": {
         "FunctionName": {
-          "Ref": "ApiGatewayOpenApiPutFnAB333A3E",
+          "Ref": "ApiGatewayApiPutFn392CE7D3",
         },
       },
       "Type": "AWS::Lambda::Version",
     },
-    "ApiGatewayOpenApiPutFnServiceRole0D300317": {
+    "ApiGatewayApiPutFnServiceRoleDefaultPolicyA65C78C1": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "apigateway:GET",
+                "ssm:*",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "ApiGatewayApiPutFnServiceRoleDefaultPolicyA65C78C1",
+        "Roles": [
+          {
+            "Ref": "ApiGatewayApiPutFnServiceRoleED7DF338",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "ApiGatewayApiPutFnServiceRoleED7DF338": {
       "Properties": {
         "AssumeRolePolicyDocument": {
           "Statement": [
@@ -186,31 +210,7 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
       },
       "Type": "AWS::IAM::Role",
     },
-    "ApiGatewayOpenApiPutFnServiceRoleDefaultPolicy38F88D4D": {
-      "Properties": {
-        "PolicyDocument": {
-          "Statement": [
-            {
-              "Action": [
-                "apigateway:GET",
-                "ssm:*",
-              ],
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "ApiGatewayOpenApiPutFnServiceRoleDefaultPolicy38F88D4D",
-        "Roles": [
-          {
-            "Ref": "ApiGatewayOpenApiPutFnServiceRole0D300317",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "ApiGatewayOpenApiPutFnTriggerE8003820": {
+    "ApiGatewayApiPutFnTriggerE3E40BFE": {
       "DeletionPolicy": "Delete",
       "DependsOn": [
         "ApiGatewayRestApiAccountDF1162EC",
@@ -227,7 +227,7 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
       ],
       "Properties": {
         "HandlerArn": {
-          "Ref": "ApiGatewayOpenApiPutFnCurrentVersion2E317B91fdb28b8b669b946cba00e3316e3fd074",
+          "Ref": "ApiGatewayApiPutFnCurrentVersion0484BF435d079b334bf5b56e5293673982e7168d",
         },
         "ServiceToken": {
           "Fn::GetAtt": [
