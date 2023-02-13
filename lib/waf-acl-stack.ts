@@ -28,7 +28,7 @@ export class WafAclStack extends cdk.Stack
     {
         this.openApiPaths = cdk.Fn.split(',',
             ssm.StringParameter.fromStringParameterAttributes(this, 'SSMOpenApiPaths', {
-                parameterName: 'openapi-paths',
+                parameterName: 'api-paths',
             }).stringValue,
             // todo aeells - array 'assumedLength' is a restriction of the CDK and is required here to iterate properly
             // restriction documented in full in the Fn#split api https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-split.html

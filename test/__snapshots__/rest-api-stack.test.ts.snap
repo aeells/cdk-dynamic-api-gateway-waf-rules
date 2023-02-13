@@ -97,7 +97,7 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
                         [
                           {
                             "Fn::GetAtt": [
-                              "ApiGatewayWafTriggerApiGatewayOpenApiPutFn1601EB8B",
+                              "ApiGatewayOpenApiPutFnAB333A3E",
                               "Arn",
                             ],
                           },
@@ -115,6 +115,129 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
         ],
       },
       "Type": "AWS::IAM::Role",
+    },
+    "ApiGatewayOpenApiPutFnAB333A3E": {
+      "DependsOn": [
+        "ApiGatewayOpenApiPutFnServiceRoleDefaultPolicy38F88D4D",
+        "ApiGatewayOpenApiPutFnServiceRole0D300317",
+      ],
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "eadcb0766277b2847dc3bf5b3d60252763ba501fd8d96e01076f704185a8f4b7.zip",
+        },
+        "Environment": {
+          "Variables": {
+            "REST_API_ID": {
+              "Ref": "ApiGatewayRestApi4735CE82",
+            },
+            "STAGE_NAME": "prod",
+          },
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "ApiGatewayOpenApiPutFnServiceRole0D300317",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs16.x",
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "ApiGatewayOpenApiPutFnCurrentVersion2E317B9180fdfb791de2e02ae55aeae39680c689": {
+      "Properties": {
+        "FunctionName": {
+          "Ref": "ApiGatewayOpenApiPutFnAB333A3E",
+        },
+      },
+      "Type": "AWS::Lambda::Version",
+    },
+    "ApiGatewayOpenApiPutFnServiceRole0D300317": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "ApiGatewayOpenApiPutFnServiceRoleDefaultPolicy38F88D4D": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "apigateway:GET",
+                "ssm:*",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "ApiGatewayOpenApiPutFnServiceRoleDefaultPolicy38F88D4D",
+        "Roles": [
+          {
+            "Ref": "ApiGatewayOpenApiPutFnServiceRole0D300317",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "ApiGatewayOpenApiPutFnTriggerE8003820": {
+      "DeletionPolicy": "Delete",
+      "DependsOn": [
+        "ApiGatewayRestApiAccountDF1162EC",
+        "ApiGatewayRestApiCloudWatchRole48C066E7",
+        "ApiGatewayRestApibooksbookIdDELETEA84942C5",
+        "ApiGatewayRestApibooksbookIdGET8B2E5C3C",
+        "ApiGatewayRestApibooksbookId3F52F5C7",
+        "ApiGatewayRestApibooksGET008BCE66",
+        "ApiGatewayRestApibooksPOSTD6C9B664",
+        "ApiGatewayRestApibooksC1DD31F2",
+        "ApiGatewayRestApiDeploymentEB3063643724aa18cd9a8f90356bfcf6a5cfc264",
+        "ApiGatewayRestApiDeploymentStageprodFFF8B293",
+        "ApiGatewayRestApi4735CE82",
+      ],
+      "Properties": {
+        "HandlerArn": {
+          "Ref": "ApiGatewayOpenApiPutFnCurrentVersion2E317B9180fdfb791de2e02ae55aeae39680c689",
+        },
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "AWSCDKTriggerCustomResourceProviderCustomResourceProviderHandler97BECD91",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::Trigger",
+      "UpdateReplacePolicy": "Delete",
     },
     "ApiGatewayRestApi4735CE82": {
       "Properties": {
@@ -294,129 +417,6 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
         },
       },
       "Type": "AWS::ApiGateway::Method",
-    },
-    "ApiGatewayWafTriggerApiGatewayOpenApiPutFn1601EB8B": {
-      "DependsOn": [
-        "ApiGatewayWafTriggerApiGatewayOpenApiPutFnServiceRoleDefaultPolicy3235456A",
-        "ApiGatewayWafTriggerApiGatewayOpenApiPutFnServiceRoleA483880F",
-      ],
-      "Properties": {
-        "Code": {
-          "S3Bucket": {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-          },
-          "S3Key": "821ad45b890ae22ca7e5f6cfcee5dd1984edac62200a54b39bca2bf4372b48ee.zip",
-        },
-        "Environment": {
-          "Variables": {
-            "REST_API_ID": {
-              "Ref": "ApiGatewayRestApi4735CE82",
-            },
-            "STAGE_NAME": "prod",
-          },
-        },
-        "Handler": "index.handler",
-        "Role": {
-          "Fn::GetAtt": [
-            "ApiGatewayWafTriggerApiGatewayOpenApiPutFnServiceRoleA483880F",
-            "Arn",
-          ],
-        },
-        "Runtime": "nodejs16.x",
-      },
-      "Type": "AWS::Lambda::Function",
-    },
-    "ApiGatewayWafTriggerApiGatewayOpenApiPutFnCurrentVersion2B6C2C03db2b8a2f3f865200330c6476625a187d": {
-      "Properties": {
-        "FunctionName": {
-          "Ref": "ApiGatewayWafTriggerApiGatewayOpenApiPutFn1601EB8B",
-        },
-      },
-      "Type": "AWS::Lambda::Version",
-    },
-    "ApiGatewayWafTriggerApiGatewayOpenApiPutFnServiceRoleA483880F": {
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Statement": [
-            {
-              "Action": "sts:AssumeRole",
-              "Effect": "Allow",
-              "Principal": {
-                "Service": "lambda.amazonaws.com",
-              },
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "ManagedPolicyArns": [
-          {
-            "Fn::Join": [
-              "",
-              [
-                "arn:",
-                {
-                  "Ref": "AWS::Partition",
-                },
-                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
-              ],
-            ],
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Role",
-    },
-    "ApiGatewayWafTriggerApiGatewayOpenApiPutFnServiceRoleDefaultPolicy3235456A": {
-      "Properties": {
-        "PolicyDocument": {
-          "Statement": [
-            {
-              "Action": [
-                "apigateway:GET",
-                "ssm:*",
-              ],
-              "Effect": "Allow",
-              "Resource": "*",
-            },
-          ],
-          "Version": "2012-10-17",
-        },
-        "PolicyName": "ApiGatewayWafTriggerApiGatewayOpenApiPutFnServiceRoleDefaultPolicy3235456A",
-        "Roles": [
-          {
-            "Ref": "ApiGatewayWafTriggerApiGatewayOpenApiPutFnServiceRoleA483880F",
-          },
-        ],
-      },
-      "Type": "AWS::IAM::Policy",
-    },
-    "ApiGatewayWafTriggerApiGatewayOpenApiPutFnTriggerFF23E50E": {
-      "DeletionPolicy": "Delete",
-      "DependsOn": [
-        "ApiGatewayRestApiAccountDF1162EC",
-        "ApiGatewayRestApiCloudWatchRole48C066E7",
-        "ApiGatewayRestApibooksbookIdDELETEA84942C5",
-        "ApiGatewayRestApibooksbookIdGET8B2E5C3C",
-        "ApiGatewayRestApibooksbookId3F52F5C7",
-        "ApiGatewayRestApibooksGET008BCE66",
-        "ApiGatewayRestApibooksPOSTD6C9B664",
-        "ApiGatewayRestApibooksC1DD31F2",
-        "ApiGatewayRestApiDeploymentEB3063643724aa18cd9a8f90356bfcf6a5cfc264",
-        "ApiGatewayRestApiDeploymentStageprodFFF8B293",
-        "ApiGatewayRestApi4735CE82",
-      ],
-      "Properties": {
-        "HandlerArn": {
-          "Ref": "ApiGatewayWafTriggerApiGatewayOpenApiPutFnCurrentVersion2B6C2C03db2b8a2f3f865200330c6476625a187d",
-        },
-        "ServiceToken": {
-          "Fn::GetAtt": [
-            "AWSCDKTriggerCustomResourceProviderCustomResourceProviderHandler97BECD91",
-            "Arn",
-          ],
-        },
-      },
-      "Type": "Custom::Trigger",
-      "UpdateReplacePolicy": "Delete",
     },
   },
   "Rules": {

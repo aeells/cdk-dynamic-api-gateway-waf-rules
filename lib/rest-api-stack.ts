@@ -1,7 +1,10 @@
 import {Construct} from 'constructs';
 import * as cdk from 'aws-cdk-lib';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
-import { ApiGatewayWafTrigger } from "./api-gateway-waf-trigger";
+import * as triggers from 'aws-cdk-lib/triggers';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as iam from 'aws-cdk-lib/aws-iam';
+import * as path from 'path';
 
 export class RestApiStack extends cdk.Stack
 {
@@ -37,11 +40,23 @@ export class RestApiStack extends cdk.Stack
 
     private createApiGatewayWafTrigger()
     {
-        const apiGatewayWafTrigger = new ApiGatewayWafTrigger(this, 'ApiGatewayWafTrigger', {
-            restApiId: this.restApi.restApiId,
-            stageName: 'prod',
+        const triggerFunction = new triggers.TriggerFunction(this, 'ApiGatewayOpenApiPutFn', {
+            runtime: lambda.Runtime.NODEJS_16_X,
+            handler: 'index.handler',
+            code: lambda.Code.fromAsset(path.join(__dirname, 'waf')),
+            environment: {
+                REST_API_ID: this.restApi.restApiId,
+                STAGE_NAME: 'prod'
+            },
+            initialPolicy: [
+                new iam.PolicyStatement({
+                    effect: iam.Effect.ALLOW,
+                    actions: ['apigateway:GET', 'ssm:*'],
+                    resources: ['*']
+                })
+            ]
         });
 
-        apiGatewayWafTrigger.triggerFunction.executeAfter(this.restApi);
+        triggerFunction.executeAfter(this.restApi);
     }
 }

@@ -17,7 +17,7 @@ export const handler = async (
     }
 
     await new AWS.SSM().putParameter({
-        Name: 'openapi-paths',
+        Name: 'api-paths',
         Value: openApiSpec.toString(),
         Overwrite: true,
         Type: 'String'
