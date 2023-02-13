@@ -10,15 +10,15 @@ export const handler = async (
         accepts: 'application/json'
     }).promise();
 
-    const openApiSpec: string[] = [];
+    const apiPaths: string[] = [];
     for (const [key] of Object.entries(JSON.parse(apiExport.body.toString()).paths))
     {
-        openApiSpec.push(key.replace('{bookId}', '[A-Za-z0-9]+-[A-za-z0-9]+'));
+        apiPaths.push(key.replace('{bookId}', '[A-Za-z0-9]+-[A-za-z0-9]+'));
     }
 
     await new AWS.SSM().putParameter({
         Name: 'api-paths',
-        Value: openApiSpec.toString(),
+        Value: apiPaths.toString(),
         Overwrite: true,
         Type: 'String'
     }).promise();

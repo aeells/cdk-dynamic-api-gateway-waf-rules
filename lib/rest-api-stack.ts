@@ -40,7 +40,7 @@ export class RestApiStack extends cdk.Stack
 
     private createApiGatewayWafTrigger()
     {
-        const triggerFunction = new triggers.TriggerFunction(this, 'ApiGatewayOpenApiPutFn', {
+        const triggerFunction = new triggers.TriggerFunction(this, 'ApiGatewayApiPutFn', {
             runtime: lambda.Runtime.NODEJS_16_X,
             handler: 'index.handler',
             code: lambda.Code.fromAsset(path.join(__dirname, 'waf')),

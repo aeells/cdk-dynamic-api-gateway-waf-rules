@@ -11,7 +11,7 @@ export interface WafRule
 
 export class WafAclStack extends cdk.Stack
 {
-    private openApiPaths: string[];
+    private apiPaths: string[];
 
     constructor(scope: Construct, id: string, props?: cdk.StackProps)
     {
@@ -26,8 +26,8 @@ export class WafAclStack extends cdk.Stack
 
     private retrieveRestApiEndpointPaths()
     {
-        this.openApiPaths = cdk.Fn.split(',',
-            ssm.StringParameter.fromStringParameterAttributes(this, 'SSMOpenApiPaths', {
+        this.apiPaths = cdk.Fn.split(',',
+            ssm.StringParameter.fromStringParameterAttributes(this, 'SSMApiPaths', {
                 parameterName: 'api-paths',
             }).stringValue,
             // todo aeells - array 'assumedLength' is a restriction of the CDK and is required here to iterate properly
@@ -59,8 +59,8 @@ export class WafAclStack extends cdk.Stack
 
     private getApiGatewayPathAllowRules(priority: number): WafRule[] {
         const rules: WafRule[] = [];
-        for (let i = 0; i < this.openApiPaths.length; i++) {
-            const apiPath: string = cdk.Fn.select(i, this.openApiPaths);
+        for (let i = 0; i < this.apiPaths.length; i++) {
+            const apiPath: string = cdk.Fn.select(i, this.apiPaths);
             rules.push(this.createApiGatewayRegexAllowRule(apiPath, priority++));
         }
 

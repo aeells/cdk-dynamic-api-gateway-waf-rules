@@ -126,7 +126,7 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "eadcb0766277b2847dc3bf5b3d60252763ba501fd8d96e01076f704185a8f4b7.zip",
+          "S3Key": "3d99f13fbdbb43dc2e2ea25e8afb9305b2267bc9bc6ea82c0a6df1ed5423e89d.zip",
         },
         "Environment": {
           "Variables": {
@@ -147,7 +147,7 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
       },
       "Type": "AWS::Lambda::Function",
     },
-    "ApiGatewayOpenApiPutFnCurrentVersion2E317B9180fdfb791de2e02ae55aeae39680c689": {
+    "ApiGatewayOpenApiPutFnCurrentVersion2E317B91fdb28b8b669b946cba00e3316e3fd074": {
       "Properties": {
         "FunctionName": {
           "Ref": "ApiGatewayOpenApiPutFnAB333A3E",
@@ -227,7 +227,7 @@ exports[`REST API stack test an API Gateway REST API exists with Lambda and asso
       ],
       "Properties": {
         "HandlerArn": {
-          "Ref": "ApiGatewayOpenApiPutFnCurrentVersion2E317B9180fdfb791de2e02ae55aeae39680c689",
+          "Ref": "ApiGatewayOpenApiPutFnCurrentVersion2E317B91fdb28b8b669b946cba00e3316e3fd074",
         },
         "ServiceToken": {
           "Fn::GetAtt": [
