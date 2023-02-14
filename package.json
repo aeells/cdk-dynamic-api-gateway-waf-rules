@@ -6,7 +6,7 @@
   },
   "scripts": {
     "clean": "tsc --build --clean",
-    "build": "tsc ",
+    "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
     "test:update-snapshot": "jest --verbose --silent --no-coverage --no-bail --updateSnapshot",
